@@ -1,9 +1,17 @@
 <?php 
-use PHPUnit\Framework\TestCase;
-class SampleTest extends TestCase
+// use PHPUnit\Framework\TestCase;
+class SampleTest extends PHPUnit_Extensions_Selenium2TestCase
 {
-    public function test_see_login_page()
+    
+    protected function setUp()
     {
-        $this->assertTrue(false);
+        $this->setBrowser('firefox');
+        $this->setBrowserUrl('http://localhost/web/kafi-house-rent-/');
+    }
+
+    public function testTitle()
+    {
+        $this->url('index1.php');
+        $this->assertEquals('Login Panel', $this->title());
     }
 }
